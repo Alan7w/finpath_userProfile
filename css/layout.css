@@ -1,0 +1,7 @@
+/* layout.css */
+@media (min-width: 800px){
+  main{grid-template-columns: 1fr 1fr}
+  section.card:nth-child(1){grid-column: 1 / -1}
+  section.card:nth-child(2){grid-column: 1 / -1}
+  section.card:nth-child(5){grid-column: 1 / -1}
+}

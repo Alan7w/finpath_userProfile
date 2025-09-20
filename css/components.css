@@ -1,0 +1,3 @@
+/* components.css */
+.btn.like-link{background:none;border:none;padding:.45rem .8rem;border-radius:.5rem;cursor:pointer;color:var(--primary)}
+.switch{display:flex; align-items:center; gap:.5rem}

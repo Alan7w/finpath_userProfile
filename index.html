@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FinPath — User Profile</title>
+  <meta name="description" content="A lightweight, accessible user profile for a gamified savings app.">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="app-header" role="banner">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">💰</span>
+      <h1 class="app-name">FinPath</h1>
+    </div>
+    <button id="menuButton" class="icon-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mainNav">
+      ☰ <span class="sr-only">Open navigation</span>
+    </button>
+  </header>
+
+  <nav id="mainNav" aria-label="Primary">
+    <ul>
+      <li><a class="active" href="#profile-summary">Profile</a></li>
+      <li><a href="#progress-goals">Goals</a></li>
+      <li><a href="#badges">Badges</a></li>
+      <li><a href="#streaks">Streak</a></li>
+      <li><a href="#activity">Activity</a></li>
+      <li><a href="#settings">Settings</a></li>
+    </ul>
+  </nav>
+
+  <main id="main">
+    <section aria-labelledby="profile-summary" class="card">
+      <h2 id="profile-summary">Profile Summary</h2>
+      <div class="profile-card">
+        <div class="avatar" id="avatar" aria-hidden="true"></div>
+        <div class="meta">
+          <div class="name-email">
+            <p id="userName" class="name"></p>
+            <p id="userEmail" class="muted"></p>
+          </div>
+          <p class="muted">Joined: <span id="joinedDate"></span></p>
+          <div class="quick-stats">
+            <div class="stat"><span id="currentBalance">$0</span><label>Total Saved (in app)</label></div>
+            <div class="stat"><span id="monthSaved">$0</span><label>Saved this Month</label></div>
+            <div class="stat"><span id="streakDays">0</span><label>Day Streak</label></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="progress-goals" class="card">
+      <h2 id="progress-goals">Progress & Goals</h2>
+
+      <div id="goalsContainer"></div>
+
+      <form id="addToGoalForm" class="inline-form" aria-labelledby="add-money-label">
+        <h3 id="add-money-label">Add Money to Goal</h3>
+        <label for="goalSelect">Goal</label>
+        <select id="goalSelect" name="goalSelect"></select>
+
+        <label for="addAmount">Amount (USD)</label>
+        <input id="addAmount" name="addAmount" inputmode="decimal" pattern="[0-9]*" required aria-describedby="addHelp">
+        <div id="addHelp" class="muted">Enter a whole number (e.g., 10)</div>
+
+        <button type="submit" class="primary">Add to Goal</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="badges" class="card">
+      <h2 id="badges">Badges & Achievements</h2>
+      <div id="badgesGrid" class="badges-grid" aria-live="polite"></div>
+    </section>
+
+    <section aria-labelledby="streaks" class="card">
+      <h2 id="streaks">Streaks & Appointments</h2>
+      <div class="streak-row">
+        <div>
+          <p>Current Streak: <strong><span id="streakCount">0</span> days</strong></p>
+          <button id="logTodayBtn" class="primary">Log Today's Save</button>
+        </div>
+        <div>
+          <p>Next Check‑In: <strong><span id="nextCheckInText">—</span></strong></p>
+          <p class="muted">Countdown: <span id="countdown">—</span></p>
+        </div>
+      </div>
+      <div id="liveRegion" class="sr-only" aria-live="polite"></div>
+    </section>
+
+    <section aria-labelledby="activity" class="card">
+      <h2 id="activity">Recent Activity</h2>
+      <ul id="activityList" class="activity-list"></ul>
+      <button id="exportBtn" class="secondary">Export My Data (JSON)</button>
+      <label for="importFile" class="btn like-link">Import Data</label>
+      <input id="importFile" type="file" accept="application/json" class="sr-only">
+    </section>
+
+    <section aria-labelledby="settings" class="card">
+      <h2 id="settings">Settings & Accessibility</h2>
+      <div class="settings-grid">
+        <div>
+          <label class="switch">
+            <input type="checkbox" id="contrastToggle">
+            <span>High Contrast Mode</span>
+          </label>
+        </div>
+        <div>
+          <label for="fontScale">Text Size</label>
+          <input id="fontScale" type="range" min="0.9" max="1.3" step="0.05" value="1.0" aria-describedby="fontScaleHelp">
+          <div id="fontScaleHelp" class="muted">Adjust reading size. Persists on this device.</div>
+        </div>
+        <div>
+          <label for="notifyHour">Daily Check‑In Time</label>
+          <input id="notifyHour" type="time" value="20:00" aria-describedby="notifyHelp">
+          <div id="notifyHelp" class="muted">Used to compute your next check‑in countdown.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>FinPath prototype · No real banking data · v0.1</small>
+  </footer>
+
+  <script src="js/state.js"></script>
+  <script src="js/badges.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/actions.js"></script>
+  <script src="js/accessibility.js"></script>
+</body>
+</html>
